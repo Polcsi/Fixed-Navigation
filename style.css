@@ -1,0 +1,150 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    display: block;
+    height: 100%;
+}
+
+body {
+    overflow: auto;
+    overscroll-behavior: none;
+    font-family: sans-serif;
+}
+
+.container {
+    height: 120vh;
+    background: #dfdfdf;
+}
+
+nav {
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 100px;
+    background: #414141;
+    padding: 0 5%;
+}
+
+nav .logo {
+    float: left;
+    width: 40%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 1.8rem;
+    color: white;
+}
+
+nav .links {
+    float: right;
+    width: 60%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+nav .links li {
+    list-style: none;
+}
+
+nav .links li a {
+    text-decoration: none;
+    display: block;
+    padding: 1em;
+    font-size: 1rem;
+    font-weight: 600;
+    color: white;
+}
+
+#nav-toggle {
+    position: absolute;
+    top: -100px;
+}
+
+nav .hamburger {
+    display: none;
+    position: absolute;
+    right: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+nav .hamburger .line {
+    width: 30px;
+    height: 5px;
+    background: white;
+    margin: 5px;
+    border-radius: 3px;
+    transition: all .3s ease-in-out;
+}
+
+@media screen and (max-width: 768px)
+{
+    nav .logo {
+        float: none;
+        width: auto;
+        justify-content: center;
+    }
+
+    nav .links {
+        float: none;
+        position: fixed;
+        z-index: 9;
+        left: 0;
+        right: 0;
+        top: 100px;
+        bottom: 100%;
+        height: auto;
+        width: 100%;
+        flex-direction: column;
+        justify-content: space-evenly;
+        background-color: rgba(0,0,0,.8);
+        overflow: hidden;
+        transition: all .5s ease-in-out;
+    }
+
+    nav .links li {
+        width: 50%;
+        text-align: center;
+    }
+
+    nav .links a {
+        font-size: 20px;
+        border: 1px solid white;
+        border-radius: 5px;
+        width: 100%;
+        transition: all ease-in-out 100ms;
+    }
+
+    nav .links a:hover {
+        background: white;
+        color: black;
+    }
+
+    nav :checked ~ .links {
+        bottom: 0;
+    }
+
+    nav .hamburger {
+        display: block;
+    }
+
+    nav :checked ~ .hamburger .line:nth-child(1) {
+        transform: translateY(10px) rotate(225deg);
+    }
+
+    nav :checked ~ .hamburger .line:nth-child(2) {
+        opacity: 0;
+    }
+
+    nav :checked ~ .hamburger .line:nth-child(3) {
+        transform: translateY(-10px) rotate(-225deg);
+    }
+}
